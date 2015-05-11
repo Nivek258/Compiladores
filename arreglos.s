@@ -94,10 +94,10 @@ $main$:
    MUL R5, R5, R4
    ADD R4, R5, #0
    LDR R5, [R12, R4]
-   MOV R4, #20
+   MOV R4, #24
    STR R5, [R12, R4]
    PUSH {R12}
-   MOV R4, #20
+   MOV R4, #24
    LDR R5, [R12, R4]
    PUSH {R5}
    MOV R4, #16
@@ -108,8 +108,9 @@ $main$:
    BL $sumaintint$
    POP {R4}
    POP {R12}
-   MOV R5, #24
+   MOV R5, #20
    STR R4, [R12, R5]
+   MOV R0, R4
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
