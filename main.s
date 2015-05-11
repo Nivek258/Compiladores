@@ -52,9 +52,10 @@ $main$:
    STR R4, [R12, R5]
    MOV R4, #4
    LDR R5, [R12, R4]
-   MOV R4, #0
-   STR R5, [R12, R4]
-   MOV R0, R5
+   LDR R4, -R4
+   MUL R4, R5, R4
+   MOV R5, #0
+   STR R4, [R12, R5]
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
