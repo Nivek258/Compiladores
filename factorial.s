@@ -64,6 +64,7 @@ $main$:
    POP {R12}
    MOV R5, #0
    STR R4, [R12, R5]
+   MOV R0, R4
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
