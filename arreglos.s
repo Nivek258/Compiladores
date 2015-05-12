@@ -119,23 +119,7 @@ $main$:
    BL $printIntegerint$
    POP {R12}
    PUSH {R12}
-   MOV R4, #16
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #28
-   PUSH {R12}
-   BL $printIntegerint$
-   POP {R12}
-   PUSH {R12}
-   MOV R4, #24
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #28
-   PUSH {R12}
-   BL $printIntegerint$
-   POP {R12}
-   PUSH {R12}
-   MOV R4, #0
+   MOV R4, #5
    PUSH {R4}
    ADD R12, R12, #28
    PUSH {R12}

@@ -39,9 +39,9 @@ $main$:
    POP {R12}
    PUSH {LR}
    PUSH {R12}
-   MOV R4, #15
+   MOV R4, #2
    PUSH {R4}
-   MOV R4, #10
+   MOV R4, #5
    PUSH {R4}
    ADD R12, R12, #8
    PUSH {R12}
@@ -50,14 +50,8 @@ $main$:
    POP {R12}
    MOV R5, #4
    STR R4, [R12, R5]
-   MOV R4, #4
-   LDR R5, [R12, R4]
-   MOV R4, #-1
-   MUL R4, R5, R4
-   MOV R5, #0
-   STR R4, [R12, R5]
    PUSH {R12}
-   MOV R4, #0
+   MOV R4, #4
    LDR R5, [R12, R4]
    PUSH {R5}
    ADD R12, R12, #8

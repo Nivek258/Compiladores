@@ -76,6 +76,14 @@ $main$:
    POP {R12}
    MOV R5, #0
    STR R4, [R12, R5]
+   PUSH {R12}
+   MOV R4, #0
+   LDR R5, [R12, R4]
+   PUSH {R5}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printIntegerint$
+   POP {R12}
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$

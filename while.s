@@ -50,7 +50,7 @@ $WHILE0$:
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   MOV R4, #10
+   MOV R4, #20
    POP {R5}
    CMP R5, R4
    MOVLT R6, #1
