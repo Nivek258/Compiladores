@@ -108,31 +108,30 @@ $main$:
    BL $sumaintint$
    POP {R4}
    POP {R12}
-   MOV R5, #20
-   STR R4, [R12, R5]
+   MOV R5, #-1
+   MUL R5, R4, R5
+   MOV R4, #20
+   STR R5, [R12, R4]
    PUSH {R12}
    MOV R4, #20
    LDR R5, [R12, R4]
    PUSH {R5}
    ADD R12, R12, #28
    PUSH {R12}
-   BL $printfint$
+   BL $printIntegerint$
    POP {R12}
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
-   
-$printfint$:
+$printInteger$:
    POP {R12}
    POP {R1}
    PUSH {LR}
-   LDR R0,=$int$
+LDR R0,=$int$
    BL printf
    LDR R12,=$_datatemp$
    POP {PC}
-   
-.section .data
-.align 2
+.section .data.align 2
 $_dataglobal$:
    .SPACE 0
 $_datatemp$:
