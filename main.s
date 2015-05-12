@@ -83,6 +83,7 @@ $main$:
    ADD R12, R12, #4
    PUSH {R12}
    BL $printIntegerint$
+   POP {R12}
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
