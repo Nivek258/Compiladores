@@ -137,4 +137,4 @@ $_dataglobal$:
 $_datatemp$:
    .SPACE 1024
 $int$:
-   .asciiz "%d"
+   .asciz "%d"
