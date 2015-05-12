@@ -138,4 +138,4 @@ $_dataglobal$:
 $_datatemp$:
    .SPACE 1024
 $int$:
-   .asciz "%d"
+   .asciz "%d"\n
