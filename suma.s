@@ -39,9 +39,9 @@ $main$:
    POP {R12}
    PUSH {LR}
    PUSH {R12}
-   MOV R4, #2
+   MOV R4, #15
    PUSH {R4}
-   MOV R4, #5
+   MOV R4, #10
    PUSH {R4}
    ADD R12, R12, #8
    PUSH {R12}
@@ -52,14 +52,34 @@ $main$:
    STR R4, [R12, R5]
    MOV R4, #4
    LDR R5, [R12, R4]
+   MOV R4, #-1
+   MUL R4, R5, R4
+   MOV R5, #0
+   STR R4, [R12, R5]
+   PUSH {R12}
    MOV R4, #0
-   STR R5, [R12, R4]
+   LDR R5, [R12, R4]
+   PUSH {R5}
+   ADD R12, R12, #8
+   PUSH {R12}
+   BL $printIntegerint$
+   POP {R12}
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
+$printIntegerint$:
+   POP {R12}
+   POP {R1}
+   PUSH {LR}
+   LDR R0,=$int$
+   BL printf
+   LDR R12,=$_datatemp$
+   POP {PC}
 .section .data
 .align 2
 $_dataglobal$:
    .SPACE 4
 $_datatemp$:
    .SPACE 1024
+$int$:
+   .asciz "%d\n"
