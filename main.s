@@ -127,11 +127,12 @@ $printInteger$:
    POP {R12}
    POP {R1}
    PUSH {LR}
-LDR R0,=$int$
+   LDR R0,=$int$
    BL printf
    LDR R12,=$_datatemp$
    POP {PC}
-.section .data.align 2
+.section .data
+.align 2
 $_dataglobal$:
    .SPACE 0
 $_datatemp$:
