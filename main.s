@@ -117,7 +117,7 @@ $main$:
    ADD R12, R12, #28
    PUSH {R12}
    BL $printfint$
-   POP{R12}
+   POP {R12}
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
