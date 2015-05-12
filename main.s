@@ -123,7 +123,7 @@ $main$:
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
-$printInteger$:
+$printIntegerint$:
    POP {R12}
    POP {R1}
    PUSH {LR}
