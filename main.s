@@ -117,6 +117,7 @@ $main$:
    ADD R12, R12, #28
    PUSH {R12}
    BL $printfint$
+   POP{R12}
    POP {PC}
 $SALTOERROR$:
    B $SALTOERROR$
@@ -125,7 +126,7 @@ $printfint$:
    POP {R12}
    POP {R1}
    PUSH {LR}
-LDR R0,=$int$
+   LDR R0,=$int$
    BL printf
    LDR R12,=$_datatemp$
    POP {PC}
