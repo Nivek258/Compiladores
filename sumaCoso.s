@@ -126,7 +126,7 @@ $sumaintint$:
 $main$:
    POP {R12}
    PUSH {LR}
-   MOV R4, {FALSE}
+   MOV R4, #0
    MOV R5, #4
    STR R4, [R12, R5]
    MOV R4, #2
@@ -279,7 +279,7 @@ $WHILE0$:
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
-   MOV R4, {TRUE}
+   MOV R4, #1
    MOV R5, #4
    STR R4, [R12, R5]
    B $WHILE0$
