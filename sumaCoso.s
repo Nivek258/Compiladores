@@ -126,13 +126,16 @@ $sumaintint$:
 $main$:
    POP {R12}
    PUSH {LR}
+   MOV R4, {FALSE}
+   MOV R5, #4
+   STR R4, [R12, R5]
    MOV R4, #2
    MOV R5, #0
    STR R4, [R12, R5]
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   MOV R4, #2
+   MOV R4, #5
    POP {R5}
    CMP R5, R4
    MOVLT R6, #1
@@ -143,7 +146,7 @@ $main$:
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #4
+   ADD R12, R12, #8
    PUSH {R12}
    BL $fibint$
    POP {R4}
@@ -154,7 +157,7 @@ $main$:
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #4
+   ADD R12, R12, #8
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
@@ -164,7 +167,7 @@ $ELSE2$:
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #4
+   ADD R12, R12, #8
    PUSH {R12}
    BL $factorialint$
    POP {R4}
@@ -175,21 +178,16 @@ $ELSE2$:
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #4
+   ADD R12, R12, #8
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
 $END2$:
 $WHILE0$:
-   MOV R4, #0
+   MOV R4, #4
    LDR R5, [R12, R4]
-   PUSH {R5}
-   MOV R4, #10
-   POP {R5}
-   CMP R5, R4
-   MOVGT R6, #1
-   MOVLE R6, #0
-   CMP R6, #0
+   NOT R4, R5
+   CMP R4, #0
    BEQ $ENDWHILE0$
    MOV R4, #0
    MOV R5, #0
@@ -245,7 +243,7 @@ $WHILE0$:
    MUL R5, R5, R4
    ADD R4, R5, #0
    LDR R5, [R11, R4]
-   MOV R4, #4
+   MOV R4, #8
    STR R5, [R12, R4]
    MOV R4, #3
    CMP R4, #4
@@ -257,30 +255,33 @@ $WHILE0$:
    MUL R5, R5, R4
    ADD R4, R5, #0
    LDR R5, [R11, R4]
-   MOV R4, #8
+   MOV R4, #12
    STR R5, [R12, R4]
    PUSH {R12}
+   MOV R4, #12
+   LDR R5, [R12, R4]
+   PUSH {R5}
    MOV R4, #8
    LDR R5, [R12, R4]
    PUSH {R5}
-   MOV R4, #4
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #12
+   ADD R12, R12, #16
    PUSH {R12}
    BL $sumaintint$
    POP {R4}
    POP {R12}
-   MOV R5, #8
+   MOV R5, #12
    STR R4, [R12, R5]
    PUSH {R12}
-   MOV R4, #8
+   MOV R4, #12
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #12
+   ADD R12, R12, #16
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
+   MOV R4, {TRUE}
+   MOV R5, #4
+   STR R4, [R12, R5]
    B $WHILE0$
 $ENDWHILE0$:
    POP {PC}
