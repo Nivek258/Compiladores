@@ -186,7 +186,10 @@ $END2$:
 $WHILE0$:
    MOV R4, #4
    LDR R5, [R12, R4]
-   NOT R4, R5
+   CMP R5, #1
+   MOVEQ R5, #0
+   MOVNE R5, #1
+   MOV R4, R5
    CMP R4, #0
    BEQ $ENDWHILE0$
    MOV R4, #0
