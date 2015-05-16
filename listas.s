@@ -61,6 +61,27 @@ $WHILE1$:
    LDR R5, [R12, R4]
    CMP R5, #0
    BEQ $ENDWHILE1$
+   MOV R4, #9
+   MOV R5, #0
+   STR R4, [R12, R5]
+   MOV R4, #1000
+   MOV R5, #-1
+   MUL R5, R4, R5
+   MOV R4, #4
+   STR R5, [R12, R4]
+   MOV R4, #4
+   LDR R5, [R12, R4]
+   MOV R4, #0
+   LDR R6, [R12, R4]
+   CMP R6, #10
+   MOVLT R4, #1
+   MOVGE R4, #0
+   CMP R4, #0
+   BEQ $SALTOERROR$
+   MOV R4, #4
+   MUL R4, R4, R6
+   ADD R6, R4, #0
+   STR R5, [R11, R6]
    PUSH {R12}
    ADD R12, R12, #12
    PUSH {R12}
