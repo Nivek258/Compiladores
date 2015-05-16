@@ -87,6 +87,9 @@ $WHILE1$:
    PUSH {R12}
    BL $mostrarLista$
    POP {R12}
+   MOV R4, #0
+   MOV R5, #8
+   STR R4, [R12, R5]
    B $WHILE1$
 $ENDWHILE1$:
    POP {PC}
