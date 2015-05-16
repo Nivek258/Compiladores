@@ -126,7 +126,7 @@ $dividiendo$:
    CMP R1, R2
    BLT $finDiv$
    SUB R1, R1, R2
-   ADD, R0, R0, #1
+   ADD R0, R0, #1
    b $dividiendo$
 $finDiv$:
    POP {PC}
@@ -139,7 +139,7 @@ $mod$:
    CMP R1, R2
    BLT $finMod$
    SUB R1, R1, R2
-   ADD, R0, R0, #1
+   ADD R0, R0, #1
    b $mod$
 $finMod$:
    POP {PC}
