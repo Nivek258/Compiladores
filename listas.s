@@ -67,8 +67,15 @@ $WHILE1$:
    MOV R4, #1000
    MOV R5, #-1
    MUL R5, R4, R5
+   PUSH {R5}
+   MOV R4, #20
+   POP {R5}
+   PUSH {R4}
+   PUSH {R5}
+   BL $division$
+   MOV R6, R0
    MOV R4, #4
-   STR R5, [R12, R4]
+   STR R6, [R12, R4]
    MOV R4, #4
    LDR R5, [R12, R4]
    MOV R4, #0
