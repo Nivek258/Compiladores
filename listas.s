@@ -65,9 +65,7 @@ $WHILE1$:
    MOV R5, #0
    STR R4, [R12, R5]
    MOV R4, #1000
-   MOV R5, #-1
-   MUL R5, R4, R5
-   PUSH {R5}
+   PUSH {R4}
    MOV R4, #20
    POP {R5}
    PUSH {R4}
