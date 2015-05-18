@@ -128,6 +128,6 @@ $finMod$:
 $_dataglobal$:
    .SPACE 4
 $_datatemp$:
-   .SPACE 1024
+   .SPACE 4096
 $int$:
    .asciz "%d\n"
