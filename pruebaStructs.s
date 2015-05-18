@@ -82,7 +82,8 @@ $main$:
    MOV R4, #4
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #1748
+   MOV R7, #1748
+   ADD R12, R12, R7
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
