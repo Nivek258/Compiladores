@@ -44,6 +44,11 @@ $operacionint$:
    PUSH {R12}
    BL $printCharchar$
    POP {R12}
+   PUSH {R12}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printVacio$
+   POP {R12}
 $END0$:
    MOV R4, #0
    LDR R5, [R12, R4]
@@ -75,6 +80,11 @@ $END0$:
    ADD R12, R12, #4
    PUSH {R12}
    BL $printCharchar$
+   POP {R12}
+   PUSH {R12}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printVacio$
    POP {R12}
 $END1$:
    MOV R4, #0
@@ -108,6 +118,11 @@ $END1$:
    PUSH {R12}
    BL $printCharchar$
    POP {R12}
+   PUSH {R12}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printVacio$
+   POP {R12}
 $END2$:
    MOV R4, #0
    LDR R5, [R12, R4]
@@ -139,6 +154,11 @@ $END2$:
    ADD R12, R12, #4
    PUSH {R12}
    BL $printCharchar$
+   POP {R12}
+   PUSH {R12}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printVacio$
    POP {R12}
 $END3$:
    MOV R4, #0
@@ -172,6 +192,11 @@ $END3$:
    PUSH {R12}
    BL $printCharchar$
    POP {R12}
+   PUSH {R12}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printVacio$
+   POP {R12}
 $END4$:
    MOV R4, #0
    LDR R5, [R12, R4]
@@ -203,6 +228,11 @@ $END4$:
    ADD R12, R12, #4
    PUSH {R12}
    BL $printCharchar$
+   POP {R12}
+   PUSH {R12}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $printVacio$
    POP {R12}
 $END5$:
    POP {PC}
@@ -426,6 +456,14 @@ $printCharchar$:
    BL printf
    LDR R12,=$_datatemp$
    POP {PC}
+$printVacio$:
+   POP {R12}
+   POP {R1}
+   PUSH {LR}
+   LDR R0,=$vacio$
+   BL printf
+   LDR R12,=$_datatemp$
+   POP {PC}
 $division$:
    MOV R0, #0
    POP {R1}
@@ -461,6 +499,8 @@ $_datatemp$:
 $int$:
    .asciz "%d\n"
 $char$:
+   .asciz "%c"
+$vacio$:
    .asciz "%c\n"
 $indexoutofbounds$:
    .ascii "IndexOutOfBoundsException\n"
