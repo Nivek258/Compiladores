@@ -458,7 +458,7 @@ $printCharchar$:
    POP {PC}
 $printVacio$:
    POP {R12}
-   POP {R1}
+   MOV R1, #" "
    PUSH {LR}
    LDR R0,=$vacio$
    BL printf
@@ -501,6 +501,6 @@ $int$:
 $char$:
    .asciz "%c"
 $vacio$:
-   .asciz "\n%c\n"
+   .asciz "%c\n"
 $indexoutofbounds$:
    .ascii "IndexOutOfBoundsException\n"
