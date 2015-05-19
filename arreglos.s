@@ -278,14 +278,30 @@ $WHILE3$:
    PUSH {R12}
    BL $mensajeboolean$
    POP {R12}
-   MOV R4, #1
+   MOV R4, #2
    MOV R5, #4
    STR R4, [R12, R5]
+   MOV R4, #4
+   LDR R5, [R12, R4]
+   MOV R4, #0
+   LDR R6, [R12, R4]
+   CMP R6, #10
+   MOVLT R4, #1
+   MOVGE R4, #0
+   CMP R4, #0
+   BEQ $SALTOERROR$
+   MOV R4, #4
+   MUL R4, R4, R6
+   ADD R6, R4, #0
+   STR R5, [R11, R6]
    PUSH {R12}
    ADD R12, R12, #12
    PUSH {R12}
    BL $mostrarLista$
    POP {R12}
+   MOV R4, #0
+   MOV R5, #8
+   STR R4, [R12, R5]
    B $WHILE3$
 $ENDWHILE3$:
    POP {PC}
