@@ -501,6 +501,6 @@ $int$:
 $char$:
    .asciz "%c"
 $vacio$:
-   .asciz "%c\n"
+   .asciz "\n%c\n"
 $indexoutofbounds$:
    .ascii "IndexOutOfBoundsException\n"
