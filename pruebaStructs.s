@@ -27,7 +27,7 @@ $fibint$:
    LDR R5, [R12, R4]
    POP {R4}
    PUSH {R5}
-   MOV Error, R4
+   MOV PC, R4
    B $END0$
 $ELSE0$:
    PUSH {R12}
@@ -61,7 +61,7 @@ $ELSE0$:
    ADD R6, R5, R4
    POP {R4}
    PUSH {R6}
-   MOV Error, R4
+   MOV PC, R4
 $END0$:
 $factorialint$:
    POP {R12}
@@ -81,7 +81,7 @@ $factorialint$:
    MOV R4, #1
    POP {R5}
    PUSH {R4}
-   MOV Error, R5
+   MOV PC, R5
    B $END1$
 $ELSE1$:
    MOV R4, #0
@@ -104,7 +104,7 @@ $ELSE1$:
    MUL R6, R5, R4
    POP {R4}
    PUSH {R6}
-   MOV Error, R4
+   MOV PC, R4
 $END1$:
 $sumaintint$:
    POP {R12}
@@ -122,7 +122,7 @@ $sumaintint$:
    ADD R6, R4, R5
    POP {R4}
    PUSH {R6}
-   MOV Error, R4
+   MOV PC, R4
 $main$:
    POP {R12}
    PUSH {LR}
@@ -141,7 +141,7 @@ $main$:
    MOVLT R6, #1
    MOVGE R6, #0
    CMP R6, #0
-   BEQ $ELSE2$
+   BEQ $END2$
    PUSH {R12}
    MOV R4, #0
    LDR R5, [R12, R4]
@@ -149,27 +149,6 @@ $main$:
    ADD R12, R12, #8
    PUSH {R12}
    BL $fibint$
-   POP {R4}
-   POP {R12}
-   MOV R5, #0
-   STR R4, [R12, R5]
-   PUSH {R12}
-   MOV R4, #0
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #8
-   PUSH {R12}
-   BL $printIntegerint$
-   POP {R12}
-   B $END2$
-$ELSE2$:
-   PUSH {R12}
-   MOV R4, #0
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #8
-   PUSH {R12}
-   BL $factorialint$
    POP {R4}
    POP {R12}
    MOV R5, #0
@@ -197,6 +176,7 @@ $WHILE0$:
    CMP R5, #4
    MOVLT R6, #1
    MOVGE R6, #0
+   MOV R6, #0
    CMP R6, #0
    BEQ $SALTOERROR$
    MOV R6, #4
@@ -208,6 +188,7 @@ $WHILE0$:
    CMP R5, #4
    MOVLT R6, #1
    MOVGE R6, #0
+   MOV R6, #0
    CMP R6, #0
    BEQ $SALTOERROR$
    MOV R6, #4
@@ -219,6 +200,7 @@ $WHILE0$:
    CMP R5, #4
    MOVLT R6, #1
    MOVGE R6, #0
+   MOV R6, #0
    CMP R6, #0
    BEQ $SALTOERROR$
    MOV R6, #4
@@ -231,15 +213,17 @@ $WHILE0$:
    MOVLT R6, #1
    MOVGE R6, #0
    CMP R6, #0
+   MOV R6, #0
    BEQ $SALTOERROR$
    MOV R6, #4
    MUL R6, R6, R5
    ADD R5, R6, #0
    STR R4, [R11, R5]
-   MOV R4, #5
+   MOV R4, #2
    CMP R4, #4
    MOVLT R5, #1
    MOVGE R5, #0
+   MOV R5, #0
    CMP R5, #0
    BEQ $SALTOERROR$
    MOV R5, #4
@@ -252,6 +236,7 @@ $WHILE0$:
    CMP R4, #4
    MOVLT R5, #1
    MOVGE R5, #0
+   MOV R5, #0
    CMP R5, #0
    BEQ $SALTOERROR$
    MOV R5, #4
@@ -289,7 +274,7 @@ $WHILE0$:
 $ENDWHILE0$:
    POP {PC}
 $SALTOERROR$:
-   LDR R0, =$indexbounds$
+   LDR R0 , =$holi$
    BL printf
    POP {PC}
 $printIntegerint$:
@@ -334,5 +319,5 @@ $_datatemp$:
    .SPACE 1024
 $int$:
    .asciz "%d\n"
-$indexbounds$:
-   .ascii "indexoutofboundsexception"
+$holi$:
+   .ascii "outofbounds"
