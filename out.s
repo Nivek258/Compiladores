@@ -8,14 +8,7 @@ main:
    POP {R12}
    BX R12
 
-$borrar$:
-   POP {R12}
-   PUSH {LR}
-   MOV R4, #5
-   MOV R5, #0
-   STR R4, [R12, R5]
-   POP {PC}
-$divintint$:
+$sumaintint$:
    POP {R12}
    POP {R10}
    STR R10, [R12, #0]
@@ -28,30 +21,7 @@ $divintint$:
    MOV R4, #4
    LDR R5, [R12, R4]
    POP {R4}
-   PUSH {R5}
-   PUSH {R4}
-   BL $division$
-   MOV R6, R0
-   POP {R4}
-   PUSH {R6}
-   MOV PC, R4
-$modintint$:
-   POP {R12}
-   POP {R10}
-   STR R10, [R12, #0]
-   POP {R10}
-   STR R10, [R12, #4]
-   PUSH {LR}
-   MOV R4, #0
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   MOV R4, #4
-   LDR R5, [R12, R4]
-   POP {R4}
-   PUSH {R5}
-   PUSH {R4}
-   BL $modulo$
-   MOV R6, R1
+   ADD R6, R4, R5
    POP {R4}
    PUSH {R6}
    MOV PC, R4
@@ -59,50 +29,34 @@ $main$:
    POP {R12}
    PUSH {LR}
    PUSH {R12}
-   MOV R4, #4
+   MOV R4, #7
    PUSH {R4}
-   MOV R4, #20
+   MOV R4, #3
    PUSH {R4}
-   ADD R12, R12, #8
+   ADD R12, R12, #4
    PUSH {R12}
-   BL $divintint$
+   BL $sumaintint$
    POP {R4}
    POP {R12}
-   MOV R5, #4
+   MOV R5, #0
    STR R4, [R12, R5]
-   MOV R4, #4
-   LDR R5, [R12, R4]
    MOV R4, #0
-   STR R5, [R12, R4]
+   LDR R5, [R12, R4]
+   MOV R4, #5
+   CMP R4, #5
+   MOVLT R6, #1
+   MOVGE R6, #0
+   CMP R6, #0
+   BEQ $SALTOERROR$
+   MOV R6, #4
+   MUL R6, R6, R4
+   ADD R4, R6, #0
+   STR R5, [R11, R4]
    PUSH {R12}
    MOV R4, #0
    LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #8
-   PUSH {R12}
-   BL $printIntegerint$
-   POP {R12}
-   PUSH {R12}
-   MOV R4, #4
-   PUSH {R4}
-   MOV R4, #21
-   PUSH {R4}
-   ADD R12, R12, #8
-   PUSH {R12}
-   BL $modintint$
-   POP {R4}
-   POP {R12}
-   MOV R5, #4
-   STR R4, [R12, R5]
-   MOV R4, #4
-   LDR R5, [R12, R4]
-   MOV R4, #0
-   STR R5, [R12, R4]
-   PUSH {R12}
-   MOV R4, #0
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #8
+   ADD R12, R12, #4
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
@@ -148,7 +102,7 @@ $finMod$:
 .section .data
 .align 2
 $_dataglobal$:
-   .SPACE 4
+   .SPACE 20
 $_datatemp$:
    .SPACE 1024
 $int$:
