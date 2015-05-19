@@ -178,9 +178,19 @@ $END0$:
 $main$:
    POP {R12}
    PUSH {LR}
+   MOV R4, #1
+   MOV R5, #-1
+   MUL R5, R4, R5
    MOV R4, #0
-   MOV R5, #0
-   STR R4, [R12, R5]
+   STR R5, [R12, R4]
+   PUSH {R12}
+   MOV R4, #0
+   LDR R5, [R12, R4]
+   PUSH {R5}
+   ADD R12, R12, #4
+   PUSH {R12}
+   BL $mensajesint$
+   POP {R12}
 $WHILE0$:
    MOV R4, #0
    LDR R5, [R12, R4]

@@ -51,23 +51,11 @@ $main$:
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
-   MOV R4, #0
-   LDR R5, [R12, R4]
-   MOV R4, #-1
-   MUL R4, R5, R4
-   MOV R5, #0
-   STR R4, [R12, R5]
-   PUSH {R12}
-   MOV R4, #0
-   LDR R5, [R12, R4]
-   PUSH {R5}
-   ADD R12, R12, #188
-   PUSH {R12}
-   BL $printIntegerint$
-   POP {R12}
    POP {PC}
 $SALTOERROR$:
-   B $SALTOERROR$
+   LDR R0,=$indexoutofbounds$
+   BL printf
+   POP {PC}
 $printIntegerint$:
    POP {R12}
    POP {R1}
@@ -75,6 +63,47 @@ $printIntegerint$:
    LDR R0,=$int$
    BL printf
    LDR R12,=$_datatemp$
+   POP {PC}
+$printCharchar$:
+   POP {R12}
+   POP {R1}
+   PUSH {LR}
+   LDR R0,=$char$
+   BL printf
+   LDR R12,=$_datatemp$
+   POP {PC}
+$printVacio$:
+   POP {R12}
+   PUSH {LR}
+   LDR R0,=$vacio$
+   BL printf
+   LDR R12,=$_datatemp$
+   POP {PC}
+$division$:
+   MOV R0, #0
+   POP {R1}
+   POP {R2}
+   PUSH {LR}
+$dividiendo$:
+   CMP R1, R2
+   BLT $finDiv$
+   SUB R1, R1, R2
+   ADD R0, R0, #1
+   b $dividiendo$
+$finDiv$:
+   POP {PC}
+$modulo$:
+   MOV R0, #0
+   POP {R1}
+   POP {R2}
+   PUSH {LR}
+$mod$:
+   CMP R1, R2
+   BLT $finMod$
+   SUB R1, R1, R2
+   ADD R0, R0, #1
+   b $mod$
+$finMod$:
    POP {PC}
 .section .data
 .align 2
@@ -84,3 +113,9 @@ $_datatemp$:
    .SPACE 1024
 $int$:
    .asciz "%d\n"
+$char$:
+   .asciz "%c"
+$vacio$:
+   .asciz " "
+$indexoutofbounds$:
+   .ascii "IndexOutOfBoundsException\n"
