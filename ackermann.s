@@ -133,7 +133,7 @@ $main$:
    PUSH {R12}
    BL $printCharchar$
    POP {R12}
-   MOV R4, #4
+   MOV R4, #2
    MOV R5, #0
    STR R4, [R12, R5]
    PUSH {R12}
