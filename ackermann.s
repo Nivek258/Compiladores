@@ -166,7 +166,7 @@ $main$:
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
-   MOV R4, #0
+   MOV R4, #1
    MOV R5, #4
    STR R4, [R12, R5]
    PUSH {R12}
