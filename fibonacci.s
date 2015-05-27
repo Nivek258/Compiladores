@@ -66,14 +66,25 @@ $END0$:
 $main$:
    POP {R12}
    PUSH {LR}
-   MOV R4, #40
+   MOV R4, #1
    MOV R5, #0
-   STR R4, [R11, R5]
+   STR R4, [R12, R5]
+$WHILE0$:
+   MOV R4, #0
+   LDR R5, [R12, R4]
+   PUSH {R5}
+   MOV R4, #40
+   POP {R5}
+   CMP R5, R4
+   MOVLT R6, #1
+   MOVGE R6, #0
+   CMP R6, #0
+   BEQ $ENDWHILE0$
    PUSH {R12}
    MOV R4, #0
-   LDR R5, [R11, R4]
+   LDR R5, [R12, R4]
    PUSH {R5}
-   ADD R12, R12, #0
+   ADD R12, R12, #4
    PUSH {R12}
    BL $fibint$
    POP {R4}
@@ -84,10 +95,20 @@ $main$:
    MOV R4, #0
    LDR R5, [R11, R4]
    PUSH {R5}
-   ADD R12, R12, #0
+   ADD R12, R12, #4
    PUSH {R12}
    BL $printIntegerint$
    POP {R12}
+   MOV R4, #0
+   LDR R5, [R12, R4]
+   PUSH {R5}
+   MOV R4, #1
+   POP {R5}
+   ADD R6, R5, R4
+   MOV R4, #0
+   STR R6, [R12, R4]
+   B $WHILE0$
+$ENDWHILE0$:
    POP {PC}
 $SALTOERROR$:
    LDR R0,=$indexoutofbounds$
